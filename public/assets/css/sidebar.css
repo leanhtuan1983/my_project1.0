@@ -1,0 +1,67 @@
+.dashboard-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 60px;
+    height: 100vh;
+    background-image: radial-gradient(
+        circle 248px at center,
+        #16d9e3 0%,
+        #30c7ec 47%,
+        #46aef7 100%
+    );
+    transition: width 0.3s;
+    overflow: hidden;
+}
+
+.menu-icon {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+.sidebar:hover {
+    width: 200px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    text-align: center;
+    padding: 15px 10px;
+    position: relative;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a .icon {
+    font-size: 24px;
+}
+
+.sidebar ul li a .title {
+    margin-left: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.sidebar:hover ul li a .title {
+    opacity: 1;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #ecf0f1;
+}

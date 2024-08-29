@@ -1,0 +1,40 @@
+.topBar {
+    display: flex;
+    margin-left: 10px;
+    height: 60px;
+    width: 96%;
+    border-bottom: 1px solid wheat;
+    box-shadow: 5px 10px 18px #888888;
+}
+.topBar-nav {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+}
+.topBar-item {
+    list-style-type: none;
+}
+.topBar-link {
+    text-decoration: none;
+    list-style-type: none;
+    padding: 10px 20px;
+}
+.user-info {
+    margin-top: 6px;
+    display: flex;
+    margin: auto;
+    height: 50px;
+    background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+    border-radius: 50px;
+}
+.user-info p {
+    padding: 0px 10px;
+    color: white;
+}
+.user-avatar {
+    margin: 2px;
+    width: 46px;
+    height: 46px;
+    background: whitesmoke;
+    border-radius: 50px;
+}
