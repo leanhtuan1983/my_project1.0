@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('categories.index')}}">
                     <span class="icon">
                     <img src="{{ asset('assets/icon/database.png') }}" alt="">
                     </span>
@@ -33,6 +33,7 @@
                     <span class="title">HELP</span>
                 </a>
             </li>
-        </ul>
+            
+        </ul>       
     </div>
   

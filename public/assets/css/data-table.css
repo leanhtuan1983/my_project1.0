@@ -1,0 +1,20 @@
+.table-content {
+    margin: auto;
+    width: 90%;
+}
+.table-title {
+    color: cadetblue;
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.table-title h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: cadetblue;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 2px;
+    margin: auto;
+    text-align: center;
+}

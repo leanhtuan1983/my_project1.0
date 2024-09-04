@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('cate_id')->constrained();
+            $table->unsignedBigInteger('cate_id');
+            $table->foreign('cate_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

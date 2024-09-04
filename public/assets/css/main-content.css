@@ -1,0 +1,11 @@
+.dashboard-container {
+    display: flex;
+    width: 100%;
+}
+.btn-action {
+    margin-bottom: 16px;
+}
+.main-content {
+    flex-grow: 1;
+    background-color: #ecf0f1;
+}

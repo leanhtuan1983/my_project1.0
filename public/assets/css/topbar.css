@@ -1,8 +1,8 @@
 .topBar {
     display: flex;
-    margin-left: 10px;
+    margin: auto;
     height: 80px;
-    width: 96%;
+    width: 90%;
     border-bottom: 1px solid wheat;
     box-shadow: 5px 10px 18px #888888;
 }
@@ -16,6 +16,7 @@
 .topBar-item {
     list-style-type: none;
     justify-content: center;
+    padding: 16px;
 }
 .topBar-link {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -26,29 +27,31 @@
     list-style-type: none;
     padding: 10px;
     position: relative;
-    top: -18px;
 }
 .user-info {
     margin-top: 6px;
     display: flex;
     margin: auto;
-    height: 50px;
+    height: 54px;
     background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
-    border-radius: 50px;
+    border-radius: 999px;
 }
 .user-info p {
-    padding: 0px 10px;
+    padding: 14px 20px;
     color: white;
 }
-.user-avatar {
-    margin: 2px;
-    width: 46px;
-    height: 46px;
-    background: whitesmoke;
-    border-radius: 50px;
-}
-.topbar-icon {
+
+.topbar-Icons {
     width: 50px;
     height: 50px;
-    padding: 0px 20px;
+}
+.btn-logout {
+    border: none;
+    background: transparent;
+}
+.btn-logout-img {
+    margin-top: 3px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50px;
 }

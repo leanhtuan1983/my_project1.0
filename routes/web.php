@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/categories',[CategoryController::class,'index'])->name('categories.index')->middleware('auth');
+
+Route::post('/categories/store',[CategoryController::class,'store'])->name('categories.store')->middleware('auth');
+Route::put('/categories/{id}',[CategoryController::class,'update'])->name('categories.update');
