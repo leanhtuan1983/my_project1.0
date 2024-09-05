@@ -13,7 +13,7 @@ class Product extends Model
         'name','cate_id'
     ];
     public function category() {
-        return $this ->belongsTo(Category::class);
+        return $this ->belongsTo(Category::class,'cate_id');
     }
     public function lot() {
         return $this -> hasMany(Lot::class);

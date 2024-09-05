@@ -10,52 +10,47 @@
 @section('content')
 <div class="table-content">
     <div class="table-title">
-        <h3>CATEGORIES</h3>
+        <h3>LOTS</h3>
     </div>
     <div class="btn-action">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add New Category</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add New Lot</button>
     </div>
     <table id="example" class="data-table" style="width:100%">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Category Name</th>
+                <th>Lot name</th>
                 <th>Created on</th>
-                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @foreach ($lots as $lot)
             <tr>
-                <td>{{$category->id}}</td>
-                <td>{{$category->name}}</td>
-                <td>{{$category->created_at->format('d/m/Y') }}</td>
-                <td>{{$category->status}}</td>
+                <td>{{$lot->id}}</td>
+                <td>{{$lot->name}}</td>
+                <td>{{$lot->created_at->format('d/m/Y') }}</td>
                 <td style = "display:flex;">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{ $category->id }}">Edit</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editLotModal{{ $lot->id }}">Edit</button>
                  <!-- Modal Edit Category -->
-                <div class="modal fade" id="editCategoryModal{{ $category->id }}" tabindex="-1" aria-labelledby="editCategoryModalLabel{{ $category->id }}" aria-hidden="true">
+                <div class="modal fade" id="editCategoryModal{{ $lot->id }}" tabindex="-1" aria-labelledby="editCategoryModalLabel{{ $lot->id }}" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editCategoryModalLabel{{ $category->id }}">Edit Category: {{ $category->name }}</h5>
+                                <h5 class="modal-title" id="editCategoryModalLabel{{ $lot->id }}">Edit Lot: {{ $lot->name }}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                            <form action="{{ route('categories.update', $category->id) }}" method="POST">
+                            <form action="{{ route('lots.update', $lot->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
-                                    <label for="name{{ $category->id }}" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" id="name {{ $category->id }}" name="name" value="{{ $category->name }}" required>
+                                    <label for="name{{ $lot->id }}" class="form-label">Lot Name</label>
+                                    <input type="text" class="form-control" id="name {{ $lot->id }}" name="name" value="{{ $lot->name }}" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="status" class="form-label">Status</label>
-                                    <select class="form-select" name="status" id="status">
-                                        <option value="active" {{ $category->status == 'active' ? 'selected' : '' }}>Active</option>
-                                        <option value="disable" {{ $category->status == 'disable' ? 'selected' : '' }}>Disable</option>
-                                    </select>
+                                    <label for="status" class="form-label">Product Name</label>
+                                    
                                 </div>
                                 <!-- Add more fields as needed -->
                                 <div class="modal-footer">
@@ -68,7 +63,7 @@
                     </div>
                 </div>
                 <!-- Delete button -->
-                <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
+                <form action="{{ route('lots.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this lot?');">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -86,24 +81,20 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Add new Category</h4>       
+          <h4 class="modal-title">Add new Lot</h4>       
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-        <form action = {{ route('categories.store') }} method="post">
+        <form action = {{ route('lots.store') }} method="post">
             @csrf
           <div class="form-group">
             <label for="name" class="col-form-label">Category Name:</label>
             <input type="text" class="form-control" id="name" name="name">
           </div>
           <div class="form-group">
-            <label for="status" class="col-form-label">Status:</label>
-            <select class="form-select" aria-label="Default select example" name="status" id="status">
-                <option selected>---Select status---</option>
-                <option value="active">Active</option>
-                <option value="disable">Disable</option>
-            </select>
+            <label for="product" class="col-form-label">Product:</label>
+           
           </div>
            <!-- Modal footer -->
             <div class="modal-footer">

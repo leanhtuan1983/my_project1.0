@@ -24,21 +24,22 @@ class CategoryController extends Controller
                         ->with('success','Category created successfully.');
     }
     public function update(Request $request, $id)
-{
-    // dd($request->all());
-    // Validate the input data
-    $validatedData = $request->validate([
-        'name' => 'required',
-        'status' => 'required',
-        
-    ]);
-
-    // Find the category by ID and update it
-    $category = Category::findOrFail($id);
-    $category->update($validatedData);
-
-    // Redirect back with a success message
-    return redirect()->route('categories.index')
-                    ->with('success', 'Category updated successfully!');
-}
+    {
+        // dd($request->all());
+        // Validate the input data
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'status' => 'required|in:active,disable',    
+         ]);
+        // Find the category by ID and update it
+        $category = Category::findOrFail($id);
+        $category->update($validatedData);
+        // Redirect back with a success message
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully!');
+    }
+    public function destroy($id) {
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('categories.index')->with('success','Category deleted successfully');
+    }
 }

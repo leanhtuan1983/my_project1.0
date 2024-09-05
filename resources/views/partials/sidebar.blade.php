@@ -9,12 +9,22 @@
                     <span class="title">MENU</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('categories.index')}}">
+            <li style = "display: flex;">
+                <a href="!#">
                     <span class="icon">
                     <img src="{{ asset('assets/icon/database.png') }}" alt="">
                     </span>
-                    <span class="title">DATABASE</span>
+                    <div class="dropdown">
+                        <span class="title dropbtn ">DATABASE</span>
+                            <div class="dropdown-content">
+                                <a href="{{ route('categories.index')}}">Category</a>
+                                <a href="{{ route('products.index')}}">Product</a>
+                                <a href="{{ route('lots.index')}}">Lot</a>
+                                <a href="#">Department</a>
+                                <a href="#">Procedure</a>
+                                <a href="#">Process</a>
+                            </div>
+                    </div>
                 </a>
             </li>
             <li>

@@ -30,9 +30,12 @@
 .sidebar ul li a {
     text-decoration: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #f5eded;
+    color: #a02525;
     display: flex;
     align-items: center;
+}
+.sidebar ul li a :hover {
+    color: azure;
 }
 
 .sidebar ul li a .icon {
@@ -54,5 +57,3 @@
     width: 48px;
     height: 48px;
 }
-
-
