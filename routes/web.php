@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LotController;
+use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +52,13 @@ Route::post('/lots/store',[LotController::class,'store'])->name('lots.store')->m
 Route::put('/lots/{id}',[LotController::class,'update'])->name('lots.update')->middleware('auth');
 Route::delete('/lots/{id}',[LotController::class,'destroy'])->name('lots.destroy')->middleware('auth');
 
+// Route các tác vụ CRUD cho Department
+Route::get('/departments',[DepartmentController::class,'index'])->name('departments.index')->middleware('auth');
+Route::post('/departments/store',[DepartmentController::class,'store'])->name('departments.store')->middleware('auth');
+Route::put('/departments/update/{id}',[DepartmentController::class,'update'])->name('departments.update')->middleware('auth');
+Route::delete('/departments/{id}',[DepartmentController::class,'destroy'])->name('departments.destroy')->middleware('auth');
+
+Route::get('/processes',[ProcessController::class,'index'])->name('processes.index')->middleware('auth');
+Route::post('/processes/store',[ProcessController::class,'store'])->name('processes.store')->middleware('auth');
+Route::put('/processes/update/{id}',[ProcessController::class,'update'])->name('processes.update')->middleware('auth');
+Route::delete('/processes/{id}',[DepartmentController::class,'destroy'])->name('processes.destroy')->middleware('auth');

@@ -33,7 +33,7 @@
                 <td>{{$category->created_at->format('d/m/Y') }}</td>
                 <td>{{$category->status}}</td>
                 <td style = "display:flex;">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{ $category->id }}">Edit</button>
+                <button type="button" class="btn btn-lg btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{ $category->id }}">Edit</button>
                  <!-- Modal Edit Category -->
                 <div class="modal fade" id="editCategoryModal{{ $category->id }}" tabindex="-1" aria-labelledby="editCategoryModalLabel{{ $category->id }}" aria-hidden="true">
                     <div class="modal-dialog">
@@ -71,7 +71,7 @@
                 <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-lg btn-outline-danger">Delete</button>
                 </form>
                 </td>
             </tr>

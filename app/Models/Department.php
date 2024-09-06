@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lot extends Model
+class Department extends Model
 {
     use HasFactory;
-    protected $table = 'lots';
+    protected $table = 'departments';
     protected $fillable = [
-        'name','product_id'
+        'name','description'
     ];
-    public function products() {
-        return $this -> belongsTo(Product::class,'product_id');
+    public function process() {
+        return $this->hasMany(Process::class);
     }
 }

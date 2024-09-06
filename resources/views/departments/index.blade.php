@@ -10,55 +10,49 @@
 @section('content')
 <div class="table-content">
     <div class="table-title">
-        <h3>LOTS</h3>
+        <h3>DEPARTMENTS</h3>
     </div>
     <div class="btn-action">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Import Single Lot</button>
-        <button type="button" class="btn btn-primary">Import Multiple Lots</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add New Department</button>
     </div>
     <table id="example" class="data-table" style="width:100%">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Lot name</th>
-                <th>Product name</th>
+                <th>Department Name</th>
+                <th>Description</th>
                 <th>Created on</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($lots as $lot)
+            @foreach ($departments as $department)
             <tr>
-                <td>{{$lot->id}}</td>
-                <td>{{$lot->name}}</td>
-                <td>{{$lot->products->name}}</td>
-                <td>{{$lot->created_at->format('d/m/Y') }}</td>
+                <td>{{$department->id}}</td>
+                <td>{{$department->name}}</td>
+                <td>{{$department->description}}</td>
+                <td>{{$department->created_at->format('d/m/Y') }}</td>
                 <td style = "display:flex;">
-                <button type="button" class="btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#showLotModal{{ $lot->id }}">Edit</button>
-                <button type="button" class="btn btn-lg btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editLotModal{{ $lot->id }}">Edit</button>
-                 <!-- Modal Edit Lot -->
-                <div class="modal fade" id="editLotModal{{ $lot->id }}" tabindex="-1" aria-labelledby="editLotModalLabel{{ $lot->id }}" aria-hidden="true">
+                <button type="button" class="btn btn-lg btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editDepartmentModal{{ $department->id }}">Edit</button>
+                 <!-- Modal Edit Category -->
+                <div class="modal fade" id="editDepartmentModal{{ $department->id }}" tabindex="-1" aria-labelledby="editDepartmentModalLabel{{ $department->id }}" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editLotModalLabel{{ $lot->id }}">Edit Lot: {{ $lot->name }}</h5>
+                                <h5 class="modal-title" id="editDepartmentModalLabel{{ $department->id }}">Edit Department: {{ $department->name }}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                            <form action="{{ route('lots.update', $lot->id) }}" method="POST">
+                            <form action="{{ route('departments.update', $department->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
-                                    <label for="name{{ $lot->id }}" class="form-label">Lot Name</label>
-                                    <input type="text" class="form-control" id="name {{ $lot->id }}" name="name" value="{{ $lot->name }}" required>
+                                    <label for="name{{ $department->id }}" class="form-label">Department Name</label>
+                                    <input type="text" class="form-control" id="name {{ $department->id }}" name="name" value="{{ $department->name }}" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="status" class="form-label">Product Name</label>
-                                    <select class="form-select" aria-label="Default select example" name="product_id" id="product_id">
-                                                @foreach ($products as $data)
-                                                    <option value="{{ $data->id }}" {{ $lot->product_id == $data->id ? 'selected' : '' }}>{{ $data->name }}</option>
-                                                @endforeach
-                                    </select>
+                                    <label for="description" class="form-label">Description</label>
+                                   <input type="textarea" class ="form-control" id="description {{ $department->id}}" name="description" value="{{ $department-> description}}" required>
                                 </div>
                                 <!-- Add more fields as needed -->
                                 <div class="modal-footer">
@@ -71,7 +65,7 @@
                     </div>
                 </div>
                 <!-- Delete button -->
-                <form action="{{ route('lots.destroy', $lot->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this lot?');">
+                <form action="{{ route('categories.destroy', $department->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-lg btn-outline-danger">Delete</button>
@@ -89,25 +83,20 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Add new Lot</h4>       
+          <h4 class="modal-title">Add new Department</h4>       
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-        <form action = {{ route('lots.store') }} method="post">
+        <form action = {{ route('departments.store') }} method="post">
             @csrf
           <div class="form-group">
-            <label for="name" class="col-form-label">Lot Name:</label>
+            <label for="name" class="col-form-label">Department Name:</label>
             <input type="text" class="form-control" id="name" name="name">
           </div>
           <div class="form-group">
-            <label for="product_id" class="col-form-label">Product:</label>
-            <select class="form-select" aria-label="Default select example" name="product_id" id="product_id">
-                <option selected>---Select Product---</option>
-                @foreach ($products as $item)
-                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                @endforeach
-            </select>
+            <label for="description" class="col-form-label">Description:</label>
+            <textarea class ="form-control" id="description" name="description"></textarea>
           </div>
            <!-- Modal footer -->
             <div class="modal-footer">
@@ -133,6 +122,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <script src="{{ asset('assets/js/data-table.js') }}"></script>
 @endsection
+
 
 
 

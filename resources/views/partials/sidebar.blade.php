@@ -17,12 +17,13 @@
                     <div class="dropdown">
                         <span class="title dropbtn ">DATABASE</span>
                             <div class="dropdown-content">
-                                <a href="{{ route('categories.index')}}">Category</a>
-                                <a href="{{ route('products.index')}}">Product</a>
-                                <a href="{{ route('lots.index')}}">Lot</a>
-                                <a href="#">Department</a>
-                                <a href="#">Procedure</a>
-                                <a href="#">Process</a>
+                                <a href="{{ route('categories.index') }}">Category</a>
+                                <a href="{{ route('products.index') }}">Product</a>
+                                <a href="{{ route('lots.index') }}">Lot</a>
+                                <a href="{{ route('departments.index') }}">Department</a>
+                                <a href="{{ route('processes.index') }}">Process</a>
+                                <a href="">Procedure</a>
+                                
                             </div>
                     </div>
                 </a>

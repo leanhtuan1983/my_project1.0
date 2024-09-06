@@ -25,7 +25,6 @@ class CategoryController extends Controller
     }
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         // Validate the input data
         $validatedData = $request->validate([
             'name' => 'required',
