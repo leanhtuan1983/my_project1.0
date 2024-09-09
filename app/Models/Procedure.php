@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Procedure extends Model
 {
     use HasFactory;
-    protected $table = 'departments';
+    protected $table ='procedures';
+
     protected $fillable = [
-        'name','description'
-    ];
+        'name', 'description', 'process_id'
+    ]; 
     public function process() {
-        return $this->hasMany(Process::class,'dept_id');
+        return $this->hasMany(Process::class);
     }
 }

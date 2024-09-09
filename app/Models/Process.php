@@ -13,6 +13,6 @@ class Process extends Model
         'name','description','dept_id'
     ];
     public function department() {
-        return $this->belongsTo(Department::class);
+        return $this -> belongsTo(Department::class,'dept_id');
     }
 }

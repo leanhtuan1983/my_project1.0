@@ -22,7 +22,7 @@
                                 <a href="{{ route('lots.index') }}">Lot</a>
                                 <a href="{{ route('departments.index') }}">Department</a>
                                 <a href="{{ route('processes.index') }}">Process</a>
-                                <a href="">Procedure</a>
+                                <a href="{{ route('procedures.index') }}">Procedure</a>
                                 
                             </div>
                     </div>

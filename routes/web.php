@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LotController;
+use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -62,3 +63,6 @@ Route::get('/processes',[ProcessController::class,'index'])->name('processes.ind
 Route::post('/processes/store',[ProcessController::class,'store'])->name('processes.store')->middleware('auth');
 Route::put('/processes/update/{id}',[ProcessController::class,'update'])->name('processes.update')->middleware('auth');
 Route::delete('/processes/{id}',[DepartmentController::class,'destroy'])->name('processes.destroy')->middleware('auth');
+
+Route::get('procedures',[ProcedureController::class,'index'])->name('procedures.index')->middleware('auth');
+Route::post('procedures/store',[ProcedureController::class,'store'])->name('procedures.store')->middleware('auth');
