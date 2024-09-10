@@ -15,4 +15,8 @@ class Process extends Model
     public function department() {
         return $this -> belongsTo(Department::class,'dept_id');
     }
+    public function procedure()
+    {
+        return $this->belongsToMany(Procedure::class);
+    }
 }

@@ -16,4 +16,8 @@ class Procedure extends Model
     public function process() {
         return $this->hasMany(Process::class);
     }
+    public function processes()
+    {
+        return $this->belongsToMany(Process::class);
+    }
 }

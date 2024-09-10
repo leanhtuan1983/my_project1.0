@@ -21,6 +21,7 @@
                 <th>ID</th>
                 <th>Procedure name</th>             
                 <th>Description</th>
+                <th>Created on</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -29,6 +30,7 @@
             <tr>
                 <td>{{$procedure->id}}</td>
                 <td>{{$procedure->name}}</td>
+                <td>{{$procedure->description}}</td>
                 <td>{{$procedure->created_at->format('d/m/Y') }}</td>
                 <td style = "display:flex;">
                     <!-- Show details button -->
@@ -42,14 +44,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="mb-3">
-                                            <label for="name{{ $procedure->id }}" class="form-label">Procedure Name</label>
-                                            <input type="text" class="form-control" id="name {{ $procedure->id }}" name="name" value="{{ $procedure->name }}" disabled>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="cate_id{{ $procedure->id }}" class="form-label">Process Name</label>
-                                            <input type="text" class="form-control" id="cate_id {{ $procedure->id }}" name="cate_id" value="{{ $procedure->category->name }}" disabled>
-                                        </div>
+                                       
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     </div>
@@ -123,42 +118,43 @@
             <input type="text" class="form-control" id="name" name="name">
           </div>
           <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" class="form-control"></textarea>
+          <div class="form-group">
           <div class="container mt-5">
-    <div class="row">
-        @foreach($processes as $dept => $processData)
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>{{ $processData->first()->department->name }}</h5>
-                    </div>
-                    <div class="card-body">
+            <div class="row">
+            @foreach($processes as $dept => $processData)
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>{{ $processData->first()->department->name }}</h5>
+                        </div>
+                        <div class="card-body">
                         @if($processData->isEmpty())
                             <p>Không có process nào trong danh mục này.</p>
                         @else
-                            <ul>
-                                @foreach($processData as $item)
-                                    <li>{{ $item->name }}-{{$item->department->name}}<input type="checkbox" class="form-check-input" id="process_id" name="process_id" value="{{ $item->id}}"></li>
-                                @endforeach
-                            </ul>
+                            @foreach($processData as $item)
+                                <div>
+                                    <input type="checkbox" name="process_id[]" value="{{ $item->id }}"><label>{{ $item->name }}</label>
+                                </div>
+                            @endforeach
                         @endif
+                        </div>
                     </div>
                 </div>
+            @endforeach
             </div>
-        @endforeach
-    </div>
-</div>
-            
-          </div>
-          
-           <!-- Modal footer -->
-            <div class="modal-footer">
+        </div>
+        </div>
+    <!-- Modal footer -->
+        <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Confirm</button>
-            </div>
-        </form>  
-        </div>       
-      </div>
-    </div>
+        </div>
+    </form>  
+    </div>       
+</div>
+</div>
 </div>
 
 @endsection
