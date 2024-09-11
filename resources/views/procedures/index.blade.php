@@ -34,24 +34,7 @@
                 <td>{{$procedure->created_at->format('d/m/Y') }}</td>
                 <td style = "display:flex;">
                     <!-- Show details button -->
-                    <button type="button" class="btn btn-lg btn-outline-primary" data-bs-toggle="modal" data-bs-target="#showProcedureModal{{ $procedure->id }}"><i class="bi bi-eye"></i></button>
-                        <!-- Modal show details -->
-                        <div class="modal fade" id="showProcedureModal{{ $procedure->id }}" tabindex="-1" aria-labelledby="showProcedureModalLabel{{ $procedure->id }}" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="editProcedureModalLabel{{ $procedure->id }}">Details of: {{ $procedure->name }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                       
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <a href="{{ route('procedures.show',$procedure->name) }}"  class="btn btn-lg btn-outline-primary"><i class="bi bi-eye"></i></a>
 
                     <!-- Edit button -->
                     <button type="button" class="btn btn-lg btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editProductModal{{ $procedure->id }}"><i class="bi bi-pen"></i></button>

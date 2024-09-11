@@ -18,6 +18,6 @@ class Procedure extends Model
     }
     public function processes()
     {
-        return $this->belongsToMany(Process::class);
+        return $this->belongsTo(Process::class,'process_id');
     }
 }
