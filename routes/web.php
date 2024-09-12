@@ -67,3 +67,5 @@ Route::delete('/processes/{id}',[DepartmentController::class,'destroy'])->name('
 Route::get('procedures',[ProcedureController::class,'index'])->name('procedures.index')->middleware('auth');
 Route::post('procedures/store',[ProcedureController::class,'store'])->name('procedures.store')->middleware('auth');
 Route::get('procedures/show/{name}',[ProcedureController::class,'show'])->name('procedures.show')->middleware('auth');
+Route::get('procedures/edit/{name}',[ProcedureController::class,'edit'])->name('procedures.edit')->middleware('auth');
+Route::put('procedures/update/{name}',[ProcedureController::class,'update'])->name('procedures.update')->middleware('auth');

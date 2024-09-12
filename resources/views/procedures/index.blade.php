@@ -37,39 +37,8 @@
                     <a href="{{ route('procedures.show',$procedure->name) }}"  class="btn btn-lg btn-outline-primary"><i class="bi bi-eye"></i></a>
 
                     <!-- Edit button -->
-                    <button type="button" class="btn btn-lg btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editProductModal{{ $procedure->id }}"><i class="bi bi-pen"></i></button>
-                        <!-- Modal Edit Product -->
-                        <div class="modal fade" id="editProductModal{{ $procedure->id }}" tabindex="-1" aria-labelledby="editProductModalLabel{{ $procedure->id }}" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="editCategoryModalLabel{{ $procedure->id }}">Edit Product: {{ $procedure->name }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                    <form action="{{ route('products.update', $procedure->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="mb-3">
-                                            <label for="name{{ $procedure->id }}" class="form-label">Product Name</label>
-                                            <input type="text" class="form-control" id="name {{ $procedure->id }}" name="name" value="{{ $procedure->name }}" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="cate_id" class="form-label">Category</label>
-                                            <select class="form-select" aria-label="Default select example" name="cate_id" id="cate_id">
-                                              
-                                            </select>
-                                        </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    <a href="{{ route('procedures.edit',$procedure->name) }}"  class="btn btn-lg btn-outline-secondary"><i class="bi bi-pen"></i></a>
+                     
                     <!-- Delete button -->
                     <form action="{{ route('products.destroy', $procedure->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
                     @csrf
